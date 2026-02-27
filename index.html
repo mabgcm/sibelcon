@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sibel Construction | Insured & Licensed</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+  <style>
+    :root {
+      --ink: #050505;
+      --gold: #d4b24c;
+      --gold-soft: #b9902d;
+      --cream: #f5efe0;
+      --graphite: #141414;
+      --text: #efe6d2;
+      --muted: rgba(245, 239, 224, 0.72);
+    }
+
+    body {
+      font-family: "Source Sans 3", sans-serif;
+      color: var(--text);
+      background: var(--ink);
+      padding-top: 4.5rem;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "Cinzel", serif;
+      letter-spacing: 0.5px;
+      color: var(--gold);
+    }
+
+    .title.is-2 {
+      color: #e4c66b;
+    }
+
+    p,
+    .subtitle,
+    .content,
+    .label,
+    .help {
+      color: var(--text);
+    }
+
+    .has-text-grey,
+    .has-text-grey-light,
+    .has-text-grey-dark {
+      color: var(--muted) !important;
+    }
+
+    .input,
+    .textarea,
+    .select select {
+      background: #0f0f0f;
+      color: var(--text);
+      border-color: rgba(212, 178, 76, 0.25);
+    }
+
+    .input::placeholder,
+    .textarea::placeholder {
+      color: rgba(245, 239, 224, 0.55);
+    }
+    .navbar-burger {
+  width: 5.5rem;
+  height: 5.5rem;
+}
+
+.navbar-burger span {
+  height: 2.5px;
+}
+
+
+    .navbar {
+      background: rgba(5, 5, 5, 0.9);
+      border-bottom: 1px solid rgba(212, 178, 76, 0.25);
+    }
+
+    .navbar-menu {
+      background: rgba(5, 5, 5, 0.98);
+    }
+
+    .navbar-menu .navbar-item,
+    .navbar-menu .navbar-link {
+      color: var(--cream);
+    }
+
+    .navbar-menu .navbar-item:hover,
+    .navbar-menu .navbar-link:hover {
+      color: var(--gold) !important;
+      background: transparent !important;
+    }
+
+    .navbar-menu .buttons .button.is-light {
+      background: #0f0f0f;
+      border: 1px solid rgba(212, 178, 76, 0.3);
+      color: var(--cream);
+    }
+
+    .navbar-menu .buttons .button.is-light:hover {
+      color: var(--gold) !important;
+    }
+
+    .navbar-item,
+    .navbar-item a,
+    .navbar-link,
+    .navbar-burger {
+      color: var(--cream);
+    }
+
+    .navbar-item:hover,
+    .navbar-link:hover,
+    .navbar-item:focus,
+    .navbar-link:focus,
+    .navbar-item:active,
+    .navbar-link:active {
+      color: var(--gold) !important;
+      background: transparent !important;
+      font-weight: 600;
+    }
+
+    .navbar-item a:hover,
+    .navbar-item a:focus,
+    .navbar-item a:active {
+      color: var(--gold) !important;
+      font-weight: 600;
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+      color: var(--gold);
+    }
+
+    .navbar-burger span {
+      background-color: var(--cream);
+    }
+
+    .hero.is-brand {
+      background: radial-gradient(circle at top, rgba(212, 178, 76, 0.18) 0%, rgba(5, 5, 5, 0.95) 55%),
+        url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80")
+          center/cover no-repeat;
+      color: var(--cream);
+    }
+
+    .hero.is-brand .title {
+      color: #e4c66b;
+    }
+
+    .hero.is-brand .subtitle,
+    .hero.is-brand p {
+      color: var(--text);
+    }
+
+    .hero.is-brand .button.is-warning {
+      background-color: var(--gold);
+      border: none;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .hero.is-brand .button.is-outlined {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .section {
+      padding: 5rem 1.5rem;
+    }
+
+    .section.is-dark {
+      background: var(--graphite);
+    }
+
+    .section.is-light {
+      background: #0f0f0f;
+    }
+
+    .section.is-accent {
+      background: linear-gradient(135deg, rgba(212, 178, 76, 0.2) 0%, rgba(5, 5, 5, 0.95) 60%);
+    }
+
+    .card,
+    .box {
+      background: #0c0c0c;
+      color: var(--cream);
+      border: 1px solid rgba(212, 178, 76, 0.2);
+    }
+
+    .service-card {
+      border-top: 4px solid var(--gold);
+    }
+
+    .service-card .service-gallery {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scroll-snap-type: x mandatory;
+    }
+
+    .service-card .service-gallery img {
+      cursor: pointer;
+      border-radius: 8px;
+      height: 220px;
+      object-fit: cover;
+      min-width: 260px;
+      scroll-snap-align: start;
+    }
+
+    .service-card .service-gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .service-card .service-gallery::-webkit-scrollbar-thumb {
+      background: rgba(212, 178, 76, 0.6);
+      border-radius: 999px;
+    }
+
+    .modal.is-active {
+      display: flex;
+    }
+
+    .service-card h3 {
+      color: var(--gold);
+    }
+
+    .tag.is-gold {
+      background: var(--gold);
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .project-card img {
+      object-fit: cover;
+      height: 220px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .stats .box {
+      text-align: center;
+    }
+
+    .partners img {
+      filter: grayscale(1) brightness(1.1);
+      opacity: 0.7;
+    }
+
+    .faq .message {
+      background: #0c0c0c;
+      border: 1px solid rgba(212, 178, 76, 0.2);
+    }
+
+    .faq details {
+      cursor: pointer;
+    }
+
+    .faq details summary {
+      list-style: none;
+    }
+
+    .faq details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq details summary::after {
+      content: "+";
+      float: right;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .faq details[open] summary::after {
+      content: "–";
+    }
+
+    .footer {
+      background: #050505;
+      color: var(--cream);
+      border-top: 1px solid rgba(212, 178, 76, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar is-fixed-top">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#top">
+        <img src="logo.png" alt="Sibel Construction" style="max-height: 70px" />
+      </a>
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="mainNav"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="mainNav" class="navbar-menu">
+      <div class="navbar-start"></div>
+      <div class="navbar-end">
+        <a class="navbar-item" href="#services">Services</a>
+        <a class="navbar-item" href="#testimonials">Testimonials</a>
+        <a class="navbar-item" href="#about">About</a>
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" href="tel:16473829927" aria-label="Phone">
+              <span class="icon">
+                <i class="fa-solid fa-phone"></i>
+              </span>
+            </a>
+            <a
+              class="button is-light"
+              href="mailto:sibelconstruction27@gmail.com"
+              aria-label="Email"
+            >
+              <span class="icon">
+                <i class="fa-solid fa-envelope"></i>
+              </span>
+            </a>
+            <a class="button is-light" href="#" aria-label="LinkedIn">
+              <span class="icon">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </span>
+            </a>
+            <a
+              class="button is-light"
+              href="https://www.instagram.com/sibelconstruction.ca/"
+              aria-label="Instagram"
+            >
+              <span class="icon">
+                <i class="fa-brands fa-instagram"></i>
+              </span>
+            </a>
+            <a
+              class="button is-light"
+              href="https://www.facebook.com/profile.php?id=61588564647645"
+              aria-label="Facebook"
+            >
+              <span class="icon">
+                <i class="fa-brands fa-facebook-f"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <a class="button is-warning">Request a Quote</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero is-brand is-fullheight" id="top">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div class="column is-6">
+            <p class="is-uppercase has-text-weight-semibold">Family-Owned • Insured & Licensed</p>
+            <h1 class="title is-1">Family-owned craftsmanship for lasting structures.</h1>
+            <p class="subtitle is-4">
+              Dummy copy: A family-run team delivering precise masonry, concrete, and finish work
+              for homes and commercial properties across the region.
+            </p>
+            <div class="buttons">
+              <a class="button is-warning is-medium">Get a Free Quote</a>
+              <a class="button is-outlined is-medium">View Portfolio</a>
+            </div>
+            <div class="stats mt-5">
+              <div class="box">
+                <p class="heading">Projects Completed</p>
+                <p class="title is-3">320+</p>
+              </div>
+              <div class="box">
+                <p class="heading">Years in Business</p>
+                <p class="title is-3">18</p>
+              </div>
+              <div class="box">
+                <p class="heading">Repeat Clients</p>
+                <p class="title is-3">70%</p>
+              </div>
+            </div>
+          </div>
+          <div class="column is-5 is-offset-1">
+            <div class="box">
+              <p class="has-text-weight-semibold">Start your project</p>
+              <p class="is-size-7">Dummy form — we reply within 24 hours.</p>
+              <div class="field mt-4">
+                <label class="label">Full Name</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Alex Builder" />
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input class="input" type="email" placeholder="alex@email.com" />
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Project Type</label>
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select>
+                      <option>Residential build</option>
+                      <option>Commercial renovation</option>
+                      <option>Exterior upgrade</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Message</label>
+                <div class="control">
+                  <textarea class="textarea" placeholder="Tell us about your scope and timeline..."></textarea>
+                </div>
+              </div>
+              <button class="button is-warning is-fullwidth">Send Request</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-dark" id="services">
+    <div class="container">
+      <div class="has-text-centered mb-6">
+        <p class="is-uppercase has-text-weight-semibold">Services & Portfolio</p>
+        <h2 class="title is-2">Specialty construction finishes.</h2>
+        <p class="subtitle is-5">The core jobs we deliver, plus a look at recent work.</p>
+      </div>
+      <div class="columns is-multiline">
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80"
+                alt="Stone work"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1460563054600-5c0aa90b2d77?auto=format&fit=crop&w=900&q=80"
+                alt="Stone detail"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80"
+                alt="Stone installation"
+                class="js-modal-image"
+              />
+            </div>
+            <h3 class="title is-4">Stone</h3>
+            <p>Dummy copy: Precision stonework for durable exteriors.</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1460563054600-5c0aa90b2d77?auto=format&fit=crop&w=900&q=80"
+                alt="Brick work"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80"
+                alt="Brick detail"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80"
+                alt="Brick installation"
+                class="js-modal-image"
+              />
+            </div>
+            <h3 class="title is-4">Brick</h3>
+            <p>Dummy copy: Clean lines and strong masonry joints.</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80"
+                alt="Block work"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1523419409543-24149c7b7a27?auto=format&fit=crop&w=900&q=80"
+                alt="Block detail"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?auto=format&fit=crop&w=900&q=80"
+                alt="Block installation"
+                class="js-modal-image"
+              />
+            </div>
+            <h3 class="title is-4">Block</h3>
+            <p>Dummy copy: Solid block installs for long-term strength.</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80"
+                alt="Stucco finish"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80"
+                alt="Stucco wall"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=900&q=80"
+                alt="Stucco exterior"
+                class="js-modal-image"
+              />
+            </div>
+            <h3 class="title is-4">Stucco</h3>
+            <p>Dummy copy: Weather-ready exterior finish systems.</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=900&q=80"
+                alt="Wooden wall plaster"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1523419409543-24149c7b7a27?auto=format&fit=crop&w=900&q=80"
+                alt="Interior plaster"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                alt="Wooden wall"
+                class="js-modal-image"
+              />
+            </div>
+            <h3 class="title is-4">Wooden Wall Plaster</h3>
+            <p>Dummy copy: Smooth, even coats with refined texture.</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1523419409543-24149c7b7a27?auto=format&fit=crop&w=900&q=80"
+                alt="Concrete pour"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80"
+                alt="Concrete finish"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80"
+                alt="Concrete detail"
+                class="js-modal-image"
+              />
+            </div>
+            <h3 class="title is-4">Concrete</h3>
+            <p>Dummy copy: Durable pours and clean structural finishes.</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?auto=format&fit=crop&w=900&q=80"
+                alt="Interlocking paver"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80"
+                alt="Paver detail"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                alt="Paver installation"
+                class="js-modal-image"
+              />
+            </div>
+            <h3 class="title is-4">Interlocking Paver</h3>
+            <p>Dummy copy: Stylish, long-lasting hardscape surfaces.</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                alt="Outdoor stairs"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=900&q=80"
+                alt="Stair detail"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80"
+                alt="Stair install"
+                class="js-modal-image"
+              />
+            </div>
+            <h3 class="title is-4">Outdoor Stairs</h3>
+            <p>Dummy copy: Safe, durable steps with clean edges.</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=900&q=80"
+                alt="Interior painting"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=900&q=80"
+                alt="Exterior painting"
+                class="js-modal-image"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80"
+                alt="Paint finish"
+                class="js-modal-image"
+              />
+            </div>
+            <h3 class="title is-4">Interior & Exterior Painting</h3>
+            <p>Dummy copy: Crisp paintwork with careful prep and finish.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-dark" id="about">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-5">
+          <figure class="image is-4by3">
+            <img
+              src="https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?auto=format&fit=crop&w=1200&q=80"
+              alt="Construction planning"
+            />
+          </figure>
+        </div>
+        <div class="column is-6 is-offset-1">
+          <p class="is-uppercase has-text-weight-semibold">Who we are</p>
+          <h2 class="title is-2">Trusted craftsmanship for every finish.</h2>
+          <p class="subtitle is-5">
+            Dummy text: Our crews combine traditional masonry skills with modern build standards
+            to deliver clean, durable, and efficient results.
+          </p>
+          <div class="columns mt-5">
+            <div class="column">
+              <p class="title is-3">98%</p>
+              <p>On-time delivery</p>
+            </div>
+            <div class="column">
+              <p class="title is-3">24</p>
+              <p>Active sites</p>
+            </div>
+            <div class="column">
+              <p class="title is-3">12</p>
+              <p>Trusted partners</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-accent">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-6">
+          <h2 class="title is-2">Exceeding expectations with every detail.</h2>
+          <p class="subtitle is-5">
+            Dummy text: We build durable, precise finishes that elevate your property.
+          </p>
+          <div class="buttons mt-4">
+            <a class="button is-warning">Get Your Free Quote</a>
+          </div>
+        </div>
+        <div class="column is-5 is-offset-1">
+          <div class="stats">
+            <div class="box">
+              <p class="title is-3">22</p>
+              <p>Services Provided</p>
+            </div>
+            <div class="box">
+              <p class="title is-3">4</p>
+              <p>Service Branches</p>
+            </div>
+            <div class="box">
+              <p class="title is-3">127</p>
+              <p>Completed Projects</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section is-light" id="testimonials">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-4">
+          <h2 class="title is-2">Our testimonials</h2>
+          <p class="subtitle is-5">Dummy feedback from recent clients.</p>
+        </div>
+        <div class="column">
+          <div class="box">
+            <p class="is-size-5">
+              “Dummy quote: The team kept the job site clean and delivered flawless masonry.”
+            </p>
+            <p class="has-text-grey">Property Owner, West End</p>
+          </div>
+          <div class="box">
+            <p class="is-size-5">
+              “Dummy quote: Clear communication, steady progress, and beautiful finishes.”
+            </p>
+            <p class="has-text-grey">Facilities Manager</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-dark faq" id="faq">
+    <div class="container">
+      <div class="has-text-centered mb-6">
+        <p class="is-uppercase has-text-weight-semibold">Frequently Asked Questions</p>
+        <h2 class="title is-2">Answers before we break ground.</h2>
+      </div>
+      <details class="box">
+        <summary class="has-text-weight-semibold">What services do you specialize in?</summary>
+        <p class="mt-3">Dummy text: We focus on masonry, concrete, stucco, pavers, and paint finishes.</p>
+      </details>
+      <details class="box">
+        <summary class="has-text-weight-semibold">Are you licensed and insured?</summary>
+        <p class="mt-3">Dummy text: Yes, we are fully insured and follow local code requirements.</p>
+      </details>
+      <details class="box">
+        <summary class="has-text-weight-semibold">Do you provide estimates?</summary>
+        <p class="mt-3">Dummy text: We offer no-obligation site visits and clear scope proposals.</p>
+      </details>
+      <details class="box">
+        <summary class="has-text-weight-semibold">How soon can you start?</summary>
+        <p class="mt-3">Dummy text: Timelines vary by project size; we schedule quickly for urgent work.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>© 2026 Sibel Construction. Dummy rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="imageModal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <p class="image">
+        <img id="modalImage" src="" alt="Project" />
+      </p>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const burgers = Array.from(document.querySelectorAll(".navbar-burger"));
+      burgers.forEach((burger) => {
+        burger.addEventListener("click", () => {
+          const target = burger.dataset.target;
+          const menu = document.getElementById(target);
+          burger.classList.toggle("is-active");
+          if (menu) {
+            menu.classList.toggle("is-active");
+          }
+        });
+      });
+
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("modalImage");
+      const closeModal = () => {
+        if (modal) {
+          modal.classList.remove("is-active");
+        }
+      };
+
+      document.querySelectorAll(".js-modal-image").forEach((img) => {
+        img.addEventListener("click", () => {
+          if (!modal || !modalImage) return;
+          modalImage.src = img.src;
+          modalImage.alt = img.alt || "Project image";
+          modal.classList.add("is-active");
+        });
+      });
+
+      if (modal) {
+        modal.addEventListener("click", (event) => {
+          if (
+            event.target.classList.contains("modal-background") ||
+            event.target.classList.contains("modal-close")
+          ) {
+            closeModal();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
