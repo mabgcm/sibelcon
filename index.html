@@ -311,6 +311,16 @@
       color: var(--cream);
       border-top: 1px solid rgba(212, 178, 76, 0.2);
     }
+
+    /* ── Testimonial Cards ── */
+    .testimonial-card {
+      border-top: 4px solid var(--gold);
+      padding: 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   </style>
 </head>
 <body>
@@ -456,13 +466,8 @@
                 class="js-modal-image"
               />
               <img
-                src="images/brick/2.webp"
+                src="images/brick/2.jpeg"
                 alt="Brick detail"
-                class="js-modal-image"
-              />
-              <img
-                src="images/brick/3.jpg"
-                alt="Brick installation"
                 class="js-modal-image"
               />
             </div>
@@ -695,7 +700,7 @@
     </div>
   </section>
 
-  <section class="section is-accent">
+  <!-- <section class="section is-accent">
     <div class="container">
       <div class="columns is-vcentered">
         <div class="column is-6">
@@ -725,30 +730,75 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
-
-  <section class="section is-light" id="testimonials">
+  <section class="section is-dark" id="services">
     <div class="container">
-      <div class="columns is-vcentered">
+      <div class="has-text-centered mb-6">
+        <h2 class="title is-2">Our Testimonials</h2>
+        <p class="subtitle is-5">See what homeowners and contractors say about working with us.</p>
+      </div>
+      <div class="columns is-multiline">
         <div class="column is-4">
-          <h2 class="title is-2">Our testimonials</h2>
-          <p class="subtitle is-5">See what homeowners and contractors say about working with us.</p>
-        </div>
-        <div class="column">
-          <div class="box">
-            <p class="is-size-5">
-              “The crew showed up on time every single day, kept the site spotless, and delivered stonework that looks absolutely incredible. Best tradespeople I've ever hired.”
-            </p>
-            <p class=”has-text-grey”>— Property Owner, Toronto West End</p>
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <div class=”box testimonial-card”>
+                <p class=”is-size-5 mb-4”>”The crew showed up on time every single day, kept the site spotless, and delivered stonework that looks absolutely incredible. Best tradespeople I've ever hired.”</p>
+                <p class=”has-text-grey”>— Mark D., Homeowner · Toronto West End</p>
+              </div>
+            </div>
           </div>
-          <div class="box">
-            <p class="is-size-5">
-              “Professional from start to finish. Sibel's team communicated clearly throughout our commercial renovation, hit every milestone on schedule, and the quality of the masonry work was outstanding.”
-            </p>
-            <p class=”has-text-grey”>— Facilities Manager, Mississauga</p>
+        </div>       
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <div class=”box testimonial-card”>
+            <p class=”is-size-5 mb-4”>”Professional from start to finish. Sibel's team communicated clearly throughout our commercial renovation, hit every milestone on schedule, and the quality of the masonry work was outstanding.”</p>
+            <p class=”has-text-grey”>— Karen T., Facilities Manager · Mississauga</p>
           </div>
-        </div>
+            </div>
+          </div>
+        </div>       
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <div class=”box testimonial-card”>
+            <p class=”is-size-5 mb-4”>”We had our front walkway and steps completely redone in interlocking stone. The attention to detail was impressive — neighbours keep asking who did the work. Would hire again without hesitation.”</p>
+            <p class=”has-text-grey”>— Roberto M., Homeowner · Brampton</p>
+          </div>
+            </div>
+          </div>
+        </div>       
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <div class=”box testimonial-card”>
+            <p class=”is-size-5 mb-4”>”Sibel Construction handled the stucco and exterior painting on our rental property. Clean work, no mess left behind, and finished two days ahead of schedule. Very happy with the result.”</p>
+            <p class=”has-text-grey”>— Aisha F., Property Investor · North York</p>
+          </div>
+            </div>
+          </div>
+        </div>       
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <div class=”box testimonial-card”>
+            <p class=”is-size-5 mb-4”>”I've worked with a lot of contractors over the years managing commercial properties — Sibel Construction stands out. They respect the budget, stick to the timeline, and the brickwork on our building exterior looks flawless.”</p>
+            <p class=”has-text-grey”>— Sandra L., Property Manager · Scarborough</p>
+          </div>
+            </div>
+          </div>
+        </div>       
+        <div class="column is-4">
+          <div class="box service-card">
+            <div class="service-gallery mb-4">
+              <div class=”box testimonial-card”>
+            <p class=”is-size-5 mb-4”>”They poured a new concrete driveway and repaired the retaining wall at the back. Fair price, honest communication, and the finish quality was exactly what we asked for. Solid team.”</p>
+            <p class=”has-text-grey”>— David C., Homeowner · Etobicoke</p>
+          </div>
+            </div>
+          </div>
+        </div>       
       </div>
     </div>
   </section>
@@ -988,6 +1038,7 @@
           }
         });
       }
+
 
       // Count-up animation for stat numbers
       const statEls = document.querySelectorAll(".stats .title, .columns.mt-5 .title");
