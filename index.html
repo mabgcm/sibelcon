@@ -379,7 +379,7 @@
           </div>
         </div>
         <div class="navbar-item">
-          <a class="button is-warning">Request a Quote</a>
+          <a class="button is-warning js-open-quote">Request a Quote</a>
         </div>
       </div>
     </div>
@@ -389,7 +389,7 @@
     <div class="hero-body">
       <div class="container">
         <div class="columns is-vcentered">
-          <div class="column is-6">
+          <div class="column is-8">
             <p class="is-uppercase has-text-weight-semibold">Family-Owned • Insured & Licensed</p>
             <h1 class="title is-1">Family-owned craftsmanship for lasting structures.</h1>
             <p class="subtitle is-4">
@@ -397,8 +397,8 @@
               concrete, and finishing services for homes and commercial properties across the Greater Toronto Area.
             </p>
             <div class="buttons">
-              <a class="button is-warning is-medium">Get a Free Quote</a>
-              <a class="button is-outlined is-medium">View Portfolio</a>
+              <a class="button is-warning is-medium js-open-quote">Get a Free Quote</a>
+              <a class="button is-outlined is-medium" href="#services">View Portfolio</a>
             </div>
             <div class="stats mt-5">
               <div class="box">
@@ -413,43 +413,6 @@
                 <p class="heading">Repeat Clients</p>
                 <p class="title is-3">70%</p>
               </div>
-            </div>
-          </div>
-          <div class="column is-5 is-offset-1">
-            <div class="box">
-              <p class="has-text-weight-semibold">Start your project</p>
-              <p class="is-size-7">Fill in your details and we'll get back to you within 24 hours.</p>
-              <div class="field mt-4">
-                <label class="label">Full Name</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Alex Builder" />
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">Email</label>
-                <div class="control">
-                  <input class="input" type="email" placeholder="alex@email.com" />
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">Project Type</label>
-                <div class="control">
-                  <div class="select is-fullwidth">
-                    <select>
-                      <option>Residential build</option>
-                      <option>Commercial renovation</option>
-                      <option>Exterior upgrade</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">Message</label>
-                <div class="control">
-                  <textarea class="textarea" placeholder="Tell us about your scope and timeline..."></textarea>
-                </div>
-              </div>
-              <button class="button is-warning is-fullwidth">Send Request</button>
             </div>
           </div>
         </div>
@@ -584,18 +547,18 @@
           <div class="box service-card">
             <div class="service-gallery mb-4">
               <img
-                src="https://images.unsplash.com/photo-1523419409543-24149c7b7a27?auto=format&fit=crop&w=900&q=80"
-                alt="Concrete pour"
+                src="images/concrete/concrete-driveway-residential.webp"
+                alt="Freshly poured residential concrete driveway"
                 class="js-modal-image"
               />
               <img
-                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80"
-                alt="Concrete finish"
+                src="images/concrete/concrete-screeding.jpg"
+                alt="Concrete flatwork being screeded and finished"
                 class="js-modal-image"
               />
               <img
-                src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80"
-                alt="Concrete detail"
+                src="images/concrete/photo3.jpeg"
+                alt="Concrete walkway construction stages"
                 class="js-modal-image"
               />
             </div>
@@ -722,7 +685,7 @@
             From your first call to the final walkthrough, we deliver clean, precise finishes that add lasting value to your property — on time and on budget.
           </p>
           <div class="buttons mt-4">
-            <a class="button is-warning">Get Your Free Quote</a>
+            <a class="button is-warning js-open-quote">Get Your Free Quote</a>
           </div>
         </div>
         <div class="column is-5 is-offset-1">
@@ -829,6 +792,72 @@
     <i class="fa-brands fa-whatsapp" style="font-size: 1.75rem;"></i>
   </a>
 
+  <div id="quoteModal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card" style="max-width:520px;width:90%;">
+      <header class="modal-card-head" style="background:#0c0c0c;border-bottom:1px solid rgba(212,178,76,0.25);">
+        <p class="modal-card-title" style="color:var(--gold);font-family:'Cinzel',serif;">Request a Free Quote</p>
+        <button class="delete js-close-quote" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body" style="background:#0c0c0c;">
+        <p class="is-size-7 mb-4" style="color:var(--muted);">Fill in your details and we'll get back to you within 24 hours.</p>
+        <div id="quoteFormSuccess" class="notification is-success is-hidden" style="background:#1a3a1a;border:1px solid #48c774;color:#ebfffc;">
+          ✓ Your request was sent! We'll be in touch within 24 hours.
+        </div>
+        <div id="quoteFormError" class="notification is-danger is-hidden" style="background:#3a1a1a;border:1px solid #f14668;color:#feecf0;">
+          Something went wrong. Please try again or call us directly.
+        </div>
+        <form id="quoteForm">
+          <div class="field">
+            <label class="label">Full Name</label>
+            <div class="control">
+              <input id="qName" class="input" type="text" placeholder="Alex Builder" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input id="qEmail" class="input" type="email" placeholder="alex@email.com" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Phone</label>
+            <div class="control">
+              <input id="qPhone" class="input" type="tel" placeholder="+1 (647) 000-0000" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Project Type</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select id="qType">
+                  <option>Residential build</option>
+                  <option>Commercial renovation</option>
+                  <option>Exterior upgrade</option>
+                  <option>Concrete / Flatwork</option>
+                  <option>Masonry / Stonework</option>
+                  <option>Interlocking Pavers</option>
+                  <option>Stucco / Plaster</option>
+                  <option>Painting</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Message</label>
+            <div class="control">
+              <textarea id="qMessage" class="textarea" rows="4" placeholder="Tell us about your scope and timeline..."></textarea>
+            </div>
+          </div>
+        </form>
+      </section>
+      <footer class="modal-card-foot" style="background:#0c0c0c;border-top:1px solid rgba(212,178,76,0.25);">
+        <button id="quoteSubmitBtn" class="button is-warning is-fullwidth" style="font-weight:600;">Send Request</button>
+      </footer>
+    </div>
+  </div>
+
   <div id="imageModal" class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
@@ -851,6 +880,66 @@
             menu.classList.toggle("is-active");
           }
         });
+      });
+
+      // Quote modal — open / close
+      const quoteModal = document.getElementById("quoteModal");
+      const closeQuoteModal = () => quoteModal.classList.remove("is-active");
+
+      document.querySelectorAll(".js-open-quote").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          document.getElementById("quoteFormSuccess").classList.add("is-hidden");
+          document.getElementById("quoteFormError").classList.add("is-hidden");
+          quoteModal.classList.add("is-active");
+        });
+      });
+
+      quoteModal.addEventListener("click", (e) => {
+        if (e.target.classList.contains("modal-background") || e.target.classList.contains("js-close-quote")) {
+          closeQuoteModal();
+        }
+      });
+
+      // Quote form — Google Apps Script submit
+      const GAS_URL = "https://script.google.com/macros/s/AKfycbwE2zX0hVtZtEb0m4eprp3bMvZLVSNSq_dQVpp9otrVOJIqDlGLqfArpEYsQflkZuoZ2g/exec"; // ← paste your deployed script URL here
+
+      document.getElementById("quoteSubmitBtn").addEventListener("click", () => {
+        const btn   = document.getElementById("quoteSubmitBtn");
+        const name  = document.getElementById("qName").value.trim();
+        const email = document.getElementById("qEmail").value.trim();
+
+        if (!name || !email) {
+          document.getElementById("qName").reportValidity();
+          document.getElementById("qEmail").reportValidity();
+          return;
+        }
+
+        document.getElementById("quoteFormSuccess").classList.add("is-hidden");
+        document.getElementById("quoteFormError").classList.add("is-hidden");
+        btn.classList.add("is-loading");
+        btn.disabled = true;
+
+        const payload = new URLSearchParams({
+          name:         name,
+          email:        email,
+          phone:        document.getElementById("qPhone").value.trim(),
+          project_type: document.getElementById("qType").value,
+          message:      document.getElementById("qMessage").value.trim(),
+        });
+
+        fetch(GAS_URL, { method: "POST", mode: "no-cors", body: payload })
+          .then(() => {
+            document.getElementById("quoteFormSuccess").classList.remove("is-hidden");
+            document.getElementById("quoteForm").reset();
+          })
+          .catch(() => {
+            document.getElementById("quoteFormError").classList.remove("is-hidden");
+          })
+          .finally(() => {
+            btn.classList.remove("is-loading");
+            btn.disabled = false;
+          });
       });
 
       const modal = document.getElementById("imageModal");
