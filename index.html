@@ -40,6 +40,10 @@
       color: var(--gold);
     }
 
+    .title {
+      color: var(--gold);
+    }
+
     .title.is-2 {
       color: #e4c66b;
     }
@@ -147,7 +151,7 @@
 
     .hero.is-brand {
       background: radial-gradient(circle at top, rgba(212, 178, 76, 0.18) 0%, rgba(5, 5, 5, 0.95) 55%),
-        url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80")
+        url("https://www.buildforce.ca/wp-content/uploads/2024/04/labour-market-information-1-1200x900.jpg")
           center/cover no-repeat;
       color: var(--cream);
     }
@@ -249,10 +253,24 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1.5rem;
+      align-items: stretch;
     }
 
     .stats .box {
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 7rem;
+      overflow: hidden;
+    }
+
+    .stats .box .heading {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
 
     .partners img {
@@ -784,6 +802,33 @@
     </div>
   </footer>
 
+  <a
+    href="https://wa.me/+16473829927"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp"
+    style="
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 9999;
+      background: #25d366;
+      color: #fff;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    "
+    onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.45)'"
+    onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.35)'"
+  >
+    <i class="fa-brands fa-whatsapp" style="font-size: 1.75rem;"></i>
+  </a>
+
   <div id="imageModal" class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
@@ -835,6 +880,38 @@
           }
         });
       }
+
+      // Count-up animation for stat numbers
+      const statEls = document.querySelectorAll(".stats .title, .columns.mt-5 .title");
+      const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const raw = el.dataset.statRaw || el.textContent.trim();
+          el.dataset.statRaw = raw;
+          const match = raw.match(/^(\d+)([+%]?)$/);
+          if (match) {
+            const target = parseInt(match[1], 10);
+            const suffix = match[2] || "";
+            const duration = 1400;
+            let startTime = null;
+            const tick = (ts) => {
+              if (!startTime) startTime = ts;
+              const progress = Math.min((ts - startTime) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              el.textContent = Math.round(eased * target) + suffix;
+              if (progress < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          } else {
+            el.style.opacity = "0";
+            el.style.transition = "opacity 0.9s ease";
+            requestAnimationFrame(() => { el.style.opacity = "1"; });
+          }
+          countObserver.unobserve(el);
+        });
+      }, { threshold: 0.4 });
+      statEls.forEach((el) => countObserver.observe(el));
     });
   </script>
 </body>
