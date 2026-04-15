@@ -956,6 +956,17 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      const trackPixel = (method, eventName, params = {}) => {
+        if (typeof window.fbq !== "function") return;
+        window.fbq(method, eventName, params);
+      };
+
+      const attachClickTracking = (selector, handler) => {
+        document.querySelectorAll(selector).forEach((element) => {
+          element.addEventListener("click", () => handler(element));
+        });
+      };
+
       const burgers = Array.from(document.querySelectorAll(".navbar-burger"));
       burgers.forEach((burger) => {
         burger.addEventListener("click", () => {
@@ -965,6 +976,57 @@
           if (menu) {
             menu.classList.toggle("is-active");
           }
+        });
+      });
+
+      attachClickTracking('a[href^="tel:"]', (link) => {
+        trackPixel("track", "Contact", {
+          contact_method: "phone",
+          destination: link.getAttribute("href"),
+        });
+      });
+
+      attachClickTracking('a[href^="mailto:"]', (link) => {
+        trackPixel("track", "Contact", {
+          contact_method: "email",
+          destination: link.getAttribute("href"),
+        });
+      });
+
+      attachClickTracking('a[href*="wa.me"]', (link) => {
+        trackPixel("track", "Contact", {
+          contact_method: "whatsapp",
+          destination: link.getAttribute("href"),
+        });
+      });
+
+      attachClickTracking('a[aria-label="Instagram"]', () => {
+        trackPixel("trackCustom", "InstagramClick", {
+          platform: "instagram",
+        });
+      });
+
+      attachClickTracking('a[aria-label="Facebook"]', () => {
+        trackPixel("trackCustom", "FacebookClick", {
+          platform: "facebook",
+        });
+      });
+
+      attachClickTracking('a.button.is-outlined.is-medium[href="#services"]', () => {
+        trackPixel("track", "ViewContent", {
+          content_name: "portfolio_section",
+          content_type: "navigation_click",
+        });
+      });
+
+      document.querySelectorAll(".faq details").forEach((detail, index) => {
+        detail.addEventListener("toggle", () => {
+          if (!detail.open) return;
+          const question =
+            detail.querySelector("summary")?.textContent.trim() || `faq_${index + 1}`;
+          trackPixel("trackCustom", "FaqOpen", {
+            question,
+          });
         });
       });
 
@@ -978,6 +1040,10 @@
           document.getElementById("quoteFormSuccess").classList.add("is-hidden");
           document.getElementById("quoteFormError").classList.add("is-hidden");
           quoteModal.classList.add("is-active");
+          trackPixel("track", "Contact", {
+            contact_method: "quote_modal",
+            button_text: btn.textContent.trim(),
+          });
         });
       });
 
@@ -994,6 +1060,9 @@
         const btn   = document.getElementById("quoteSubmitBtn");
         const name  = document.getElementById("qName").value.trim();
         const email = document.getElementById("qEmail").value.trim();
+        const phone = document.getElementById("qPhone").value.trim();
+        const projectType = document.getElementById("qType").value;
+        const message = document.getElementById("qMessage").value.trim();
 
         if (!name || !email) {
           document.getElementById("qName").reportValidity();
@@ -1009,18 +1078,27 @@
         const payload = new URLSearchParams({
           name:         name,
           email:        email,
-          phone:        document.getElementById("qPhone").value.trim(),
-          project_type: document.getElementById("qType").value,
-          message:      document.getElementById("qMessage").value.trim(),
+          phone:        phone,
+          project_type: projectType,
+          message:      message,
         });
 
         fetch(GAS_URL, { method: "POST", mode: "no-cors", body: payload })
           .then(() => {
             document.getElementById("quoteFormSuccess").classList.remove("is-hidden");
             document.getElementById("quoteForm").reset();
+            trackPixel("track", "Lead", {
+              lead_type: "quote_request",
+              project_type: projectType,
+              has_phone: Boolean(phone),
+              has_message: Boolean(message),
+            });
           })
           .catch(() => {
             document.getElementById("quoteFormError").classList.remove("is-hidden");
+            trackPixel("trackCustom", "QuoteFormError", {
+              project_type: projectType,
+            });
           })
           .finally(() => {
             btn.classList.remove("is-loading");
@@ -1039,9 +1117,17 @@
       document.querySelectorAll(".js-modal-image").forEach((img) => {
         img.addEventListener("click", () => {
           if (!modal || !modalImage) return;
+          const serviceName =
+            img.closest(".service-card")?.querySelector(".title.is-4")?.textContent.trim() ||
+            "Portfolio";
           modalImage.src = img.src;
           modalImage.alt = img.alt || "Project image";
           modal.classList.add("is-active");
+          trackPixel("track", "ViewContent", {
+            content_name: img.alt || "Project image",
+            content_category: serviceName,
+            content_type: "portfolio_image",
+          });
         });
       });
 
